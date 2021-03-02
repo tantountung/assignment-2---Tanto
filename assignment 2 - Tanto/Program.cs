@@ -90,10 +90,11 @@ namespace assignment_2___Tanto
             char[] dashWords = new char[chosenWord.Length];//count the string to integer, thats why in for, use int
             for (int i = 0; i < dashWords.Length; i++)//dont forget ;, stupid Tanto......, 2 hours sighh....
             {
-                dashWords[i] = '_';
+                dashWords[i] = '-';
             }
+            string str = new string(dashWords);
 
-            Console.WriteLine(dashWords+ " ");
+            Console.WriteLine(str);
             
 
             // StringBuilder (bikin disini buat menan=pung incorrect letter, yg dibutuhkan hanya letters, kalo words, sekali tembak, atau mati)
@@ -103,7 +104,7 @@ namespace assignment_2___Tanto
             // jadi kalo if -1, ga ada yg di index of chosen WOrd, tapi kalo +1, tru, pakai indexOFfunction
 
             StringBuilder incorrectGuess = new StringBuilder();
-            StringBuilder finalGuessword = new StringBuilder();
+           
             
 
             //StringBuilder newDashword = new StringBuilde
@@ -113,9 +114,8 @@ namespace assignment_2___Tanto
             {
 
                 Console.WriteLine("Please enter your guess: ");
-                var userGule = Console.ReadLine();
-                userGule = userGule.ToLower();
-
+                char userGule = Console.ReadKey(false).KeyChar;
+                userGule = char.ToLower(userGule);
 
 
                 if (incorrectGuess.ToString().Contains(userGule))
@@ -125,75 +125,39 @@ namespace assignment_2___Tanto
                 }
                 else
                 {
-                    var at = chosenWord.Contains(userGule);
-
+                    
+                    
+                    bool at = chosenWord.Contains(userGule);
+                    
                     //sekarang index of dulu(done, pake contains), lalu logika -1(done, contains use true false, notnumber -1), 
                     //dan lalu replace dash, dan logika sumbang darah i-- utk tenakan yg sama (done), alu win stop the circle,
 
 
 
-                    if (at == true)
+                    if (at)
                     {
                         Console.WriteLine("");
 
-                        //var positionuserGule = chosenWord.IndexOf(userGule);
-                       // var changetoDash = chosenWord.Replace(Array[], "_");
-
-                        // ask the user to guess (taken from internet, dont really understand yet)
-                        
-
-                       // int countx = 0;
-                        //do
-                        //{
-                          //  char input = userGule.ToCharArray()[0];
-
-                            //for (int x = 0; x < chosenWord.Length; x++)
-                         //   {
-                          //      //if the user guessed right, replace the correct dash and display to the user
-                          //      if (chosenWord[x] == input)
-                          //      {
-                           //         countx++; //update the count to check when to exit
-                          //          dashWords[x] = input;  //here if the user guess correct, we replace the dash with the input
-                        //
-                          //          //now we display the dash array after it is modified
-                           //         for (int j = 0; j < dashWords.Length; j++)
-                          //          {
-                           //             Console.Write(dashWords[j]);
-                           //         }
-                          //      }
-                         //   }
-                          //  Console.WriteLine();
-                      //  }
-
-
-                       // while (countx < dashWords.Length);
-                        //    Console.WriteLine("You guessed it right");
-                         //   Console.ReadLine();
-                        //
-
-                        //var seqGule = chosenWord.Substring(chosenWord.IndexOf);
-                        //var nwDashword = , userGule);
-                        //Console.WriteLine(nwDashword);
-                        //string newDashword = dashWords;
-                        //Console.WriteLine(newDashword);
-                        //
-                        //if (userGule = char[chosenWord])
-
-
-                        if (finalGuessword = chosenWord)
+                        for (int x = 0; x < chosenWord.Length; i++)
                         {
+                            if (chosenWord[x] == userGule)
+                            {
+                                dashWords[x] = chosenWord[x];
+                            }
+                        }
+                        str = new string(dashWords);
+                        Console.WriteLine(str);
+                        Console.WriteLine("Good guess! Keep going!");
+
+                        if (str == chosenWord)
+                        {
+                            
                             Console.WriteLine("Congrats, you won!!");
+                            i = 0;
                             break;
                         }
-                        else
-                        {
-                            //find a way to replace dash with userGule, and print the updated dashWords, 
-                            //put it in StringBuilder finalGuessword
-                            Console.WriteLine("Good guess! Keep going!");
-                            finalGuessword.Append(userGule);
-                        }
-
                     }
+
                     else
                     {
                         Console.WriteLine("");
